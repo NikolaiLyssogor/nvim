@@ -4,6 +4,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set nowrap")
 vim.cmd("set noshowmode")
+vim.cmd("set signcolumn=yes") -- keep gutter in fixed position
 vim.wo.number = true
 vim.g.mapleader = " "
 

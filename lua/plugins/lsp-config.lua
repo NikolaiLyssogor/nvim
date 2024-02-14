@@ -22,12 +22,30 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.pyright.setup({
-				capabilities = capabilities,
+				on_attach = on_attach,
+				settings = {
+					python = {
+						analysis = {
+							diagnosticMode = "openFilesOnly",
+							typeCheckingMode = "strict",
+							useLibraryCodeForTypes = true,
+							autoImportCompletions = true,
+						},
+					},
+				},
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			-- vim.api.nvim_set_keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("i", "<c-k>", function()
+				vim.lsp.buf.signature_help()
+			end, { buffer = true })
+			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers["signature_help"], {
+				border = "single",
+				close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
+			})
 		end,
 	},
 }
