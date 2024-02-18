@@ -2,9 +2,9 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
+vim.cmd("set signcolumn=yes") -- keep gutter in fixed position
 vim.cmd("set nowrap")
 vim.cmd("set noshowmode")
-vim.cmd("set signcolumn=yes") -- keep gutter in fixed position
 vim.wo.number = true
 vim.g.mapleader = " "
 
@@ -28,3 +28,7 @@ vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window s
 -- indent/unindent with tab/shift-tab
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
+
+-- always yank to system clipboard
+vim.cmd("set clipboard=unnamed")
+
