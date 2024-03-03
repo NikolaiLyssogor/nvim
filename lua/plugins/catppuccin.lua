@@ -13,6 +13,9 @@ return {
                 yellow = "#d6830e",
                 -- base = "#d6dae1",
             },
+            mocha = {
+                -- base = "#000000",
+            },
         },
     },
     config = function(_, opts)
